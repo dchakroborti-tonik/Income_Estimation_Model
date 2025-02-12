@@ -1,0 +1,23 @@
+
+def plot_residuals_hist(y_true, y_pred, title='Residual Histogram Plot'):
+    """
+    Create a residual plot to visualize model errors with type conversion
+    
+    Parameters:
+    - y_true: True target values
+    - y_pred: Predicted target values
+    - title: Plot title
+    """
+    # Convert to numpy float arrays to ensure type compatibility
+    y_true_float = np.array(y_true, dtype=float)
+    y_pred_float = np.array(y_pred, dtype=float)
+    
+    residuals = y_true_float - y_pred_float
+
+    plt.figure(figsize=(10, 6))
+    sns.histplot(residuals, kde=True)
+    plt.title('Residual Histogram')
+    plt.xlabel('Residuals')
+    plt.ylabel('Frequency')
+    plt.show()
+    

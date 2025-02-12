@@ -1,0 +1,18 @@
+
+def upload_blob(bucket_name, source_file_name, destination_blob_name):
+    """Uploads a file to the bucket.   
+
+
+    Args:
+        bucket_name: The name of the bucket.
+        source_file_name: The path to the file to upload.
+        destination_blob_name: The name of the blob to be created.
+    """
+    storage_client = storage.Client()
+    bucket = storage_client.bucket(bucket_name)
+    blob = bucket.blob(destination_blob_name)
+
+    blob.upload_from_filename(source_file_name)
+
+    print(f"File {source_file_name} uploaded to {destination_blob_name}.")
+    
